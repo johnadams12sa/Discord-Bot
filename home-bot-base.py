@@ -1,6 +1,7 @@
 #does not compile atm, just a bare bones scratching 12/10/20 Ron
 
 import os
+import greeting
 
 import discord
 from dotenv import load_dotenv
@@ -21,6 +22,6 @@ async def on_message(message):
 		return
 	
 	if message.content.startswith('$hello'):
-		await message.channel.send('Yo!')
+		await message.channel.send(greeting.greet(message.author))
 
 client.run(TOKEN)
