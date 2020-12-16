@@ -14,4 +14,13 @@ client = discord.Client()
 async def on_ready():
 	print(f'{client.user} has connected to the server!')
 
+@client.event
+async def on_message(message):
+	#checks if the message is from the bot itself, we don't want a loop
+	if message.author == client.user:
+		return
+	
+	if message.content.startswith('$hello'):
+		await message.channel.send('Yo!')
+
 client.run(TOKEN)
